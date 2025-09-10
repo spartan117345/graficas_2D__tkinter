@@ -1,4 +1,5 @@
 from tkinter import *
+import random
 
 # ------------------
 # variables globales
@@ -29,36 +30,22 @@ c = Canvas(frame_graficacion, width=BASE, height=ALTURA)
 c.config(bg="black")
 c.place(x=10,y=10)
 
-#-----------------------
-# lineas rectas
-# ----------------------
-linea_1 = c.create_line(BASE/2, ALTURA/2, BASE, 0, fill ="red", width=2)
-linea_2 = c.create_line(0,0, BASE/2, ALTURA/2, fill ="green", width=2)
+# -------------------------------------
+# figuras de color y/o tamaño aleatorio
+# -------------------------------------
 
-#-----------------------
-# dibujar texto
-# ----------------------
-texto_1 = c.create_text(BASE/4, ALTURA/4, anchor="center", text = "julian sanchez", font = ("Arial", 25, "bold"), fill="blue", activefill="yellow")
+for i in range(100):
+    x = random.randint(0,BASE - 20)
+    y = random.randint(0,ALTURA-20)
 
-# ----------------------
-# rectangulos
-# ---------------------
-rectangulo_1 = c.create_rectangle(BASE/2, ALTURA/2, BASE , ALTURA,fill="pink", outline="blue")
+    color = "#"
 
-# ------------------------
-# poligonos
-# ------------------------
-poligono_1=c.create_polygon(0,0, BASE/2,ALTURA/2,0,ALTURA,fill="red",outline="red")
+    for caracter in range(6):
+        color = color + random.choice("0123456789ABCDEF")
 
-# --------------------
-# circulos
-#---------------------
-circulo1 = c.create_oval(BASE/2-50, ALTURA/2-50, BASE/2+50,ALTURA/2+50,fill="orange", outline="green")
+    circulo = c.create_oval(x, y, x+20, y+20, fill = color)
 
-# --------------------
-# arcos
-#---------------------
-arco_1 = c.create_arc(BASE/2-30, ALTURA/2-30,BASE/2+30, ALTURA/2+30, start=30, extent=300,fill="black")
+
 
 
 
